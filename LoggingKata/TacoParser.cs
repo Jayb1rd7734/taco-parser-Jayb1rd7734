@@ -9,10 +9,13 @@
         
         public ITrackable Parse(string line)
         {
-            logger.LogInfo("Begin parsing");
+            if (line == null || line == "") return null;
 
-            // Do not fail if one record parsing fails, return null
-            return null; // TODO Implement
+            var cells = line.Split(',');
+
+            if (cells.Length != 3) return null;
+
+            return new TacoBell(cells);
         }
     }
 }
